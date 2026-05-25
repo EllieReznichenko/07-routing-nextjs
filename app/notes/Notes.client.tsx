@@ -14,13 +14,15 @@ import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 import css from "./notes.module.css";
 
 interface NotesClientProps {
-  initialPage: number;
-  initialSearch: string;
+  initialPage?: number;
+  initialSearch?: string;
+  initialTag?: string;
 }
 
 export default function NotesClient({
-  initialPage,
-  initialSearch,
+  initialPage = 1,
+  initialSearch = "",
+  initialTag,
 }: NotesClientProps) {
   console.log("NotesClient rendered");
   const [page, setPage] = useState(initialPage);
@@ -39,15 +41,19 @@ export default function NotesClient({
   };
 
   const { data, isLoading, isError, isSuccess } = useQuery({
-    queryKey: ["notes", page, debouncedSearch],
+    queryKey: ["notes", page, debouncedSearch, initialTag],
+
     queryFn: () => {
       console.log("useQuery -> fetchNotes called");
+
       return fetchNotes({
         page,
         perPage: 12,
         search: debouncedSearch,
+        tag: initialTag,
       });
     },
+
     placeholderData: keepPreviousData,
   });
 
