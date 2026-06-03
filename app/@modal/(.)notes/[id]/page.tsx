@@ -1,5 +1,5 @@
 import ModalWrapper from "@/components/ModalWrapper/ModalWrapper";
-import NotePreview from "@/components/NotePreview/NotePreview";
+import NotePreviewClient from "./NotePreview.client";
 
 type Props = {
   params: Promise<{
@@ -12,7 +12,7 @@ export default async function NotePreviewModal({ params }: Props) {
 
   return (
     <ModalWrapper>
-      <NotePreview id={id} />
+      <NotePreviewClient id={id} />
     </ModalWrapper>
   );
 }
