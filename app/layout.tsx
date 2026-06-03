@@ -9,17 +9,19 @@ export const metadata: Metadata = {
   description: "Simple notes app on Next.js",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type Props = {
   children: React.ReactNode;
-}>) {
+  modal: React.ReactNode;
+};
+
+export default function RootLayout({ children, modal }: Props) {
   return (
     <html lang="en">
       <body>
         <TanStackProvider>
           <Header />
           {children}
+          {modal}
           <Footer />
         </TanStackProvider>
       </body>
