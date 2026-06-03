@@ -11,7 +11,7 @@ import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import Loader from "@/components/Loader/Loader";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
-import css from "app/notes/filter/[...slug]/Notes.client";
+import css from "../../notes.module.css";
 
 interface NotesClientProps {
   initialPage?: number;
